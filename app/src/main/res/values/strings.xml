@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jajal</string>
+    <string name="choose_place_tittle">Choose Place</string>
+    <string name="check_result">Check Result</string>
+</resources>
