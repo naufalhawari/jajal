@@ -23,4 +23,6 @@ public class Edge {
     public Integer getBobot() {
         return bobot;
     }
+
+
 }
