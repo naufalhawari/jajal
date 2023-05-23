@@ -28,7 +28,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
         binding = ActivitySelectPlaceBinding.inflate(getLayoutInflater());
 //        setContentView(R.layout.activity_select_place);
 
-        userTravelGraph = createTravelGraph(userPlaceList);
         setListener();
     }
 
@@ -79,6 +78,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
         bruteExeTime = start - end;
 
         start = System.currentTimeMillis()/1000;
+        userTravelGraph = createTravelGraph(userPlaceList);
         kruskalMST(userTravelGraph);
         end = System.currentTimeMillis()/1000;
         kruskalExeTime = start - end;

@@ -546,7 +546,7 @@
                 <LinearLayout
                     android:id="@+id/result"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="500dp"
                     android:orientation="vertical"
                     android:background="@color/white"
                     android:layout_gravity="center_vertical"
@@ -558,6 +558,7 @@
                         android:gravity="center_horizontal">
 
                         <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_bruteforce"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAllCaps="false"
@@ -566,7 +567,8 @@
                             android:textStyle="bold"
                             android:textSize="18sp"/>
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_kruskal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="32dp"
@@ -578,6 +580,42 @@
                             android:backgroundTint="@color/secondary"/>
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/rute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Pilihan Rute:\n"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/waktu_rute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Total Waktu Rute:\n"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/waktu_eksekusi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Waktu Eksekusi Algoritma:\n"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/hasil_optimal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Hasil Optimal: "
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
 
                 </LinearLayout>
 
