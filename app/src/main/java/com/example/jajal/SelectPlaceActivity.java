@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.jajal.databinding.ActivitySelectPlaceBinding;
 
@@ -22,18 +23,23 @@ public class SelectPlaceActivity extends AppCompatActivity {
     List<String> userPlaceList = new ArrayList<>();
     ActivitySelectPlaceBinding binding;
 
+    boolean checkResultState = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivitySelectPlaceBinding.inflate(getLayoutInflater());
-//        setContentView(R.layout.activity_select_place);
+        setContentView(binding.getRoot());
 
         setListener();
     }
 
     void setListener(){
-        binding.checkResultButton.setOnClickListener(e -> {
-            if (binding.checkResultButton.getText().toString().equals("Check Result")) {
+        binding.checkResultButton.setOnClickListener(v -> {
+            Toast.makeText(getApplicationContext(), "Here", Toast.LENGTH_LONG).show();
+            if (!checkResultState) {
+                inputUserPlaceList();
                 binding.checkResultButton.setText("Back");
                 binding.result.setVisibility(View.VISIBLE);
                 binding.selectPlaceList.setVisibility(View.GONE);
@@ -44,8 +50,109 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 binding.result.setVisibility(View.GONE);
                 clearAnswer();
             }
+            checkResultState = !checkResultState;
+        });
+        binding.buttonBruteforce.setOnClickListener(v -> {
+
+            binding.buttonBruteforce.setBackgroundColor(getColor(R.color.primary));
+            binding.buttonKruskal.setBackgroundColor(getColor(R.color.secondary));
         });
 
+        binding.buttonKruskal.setOnClickListener(v -> {
+            binding.buttonKruskal.setBackgroundColor(getColor(R.color.primary));
+            binding.buttonBruteforce.setBackgroundColor(getColor(R.color.secondary));
+        });
+
+        binding.padang.setOnClickListener(v -> binding.checkPadang.setChecked(
+                !binding.checkPadang.isChecked()
+        ));
+
+        binding.dreamland.setOnClickListener(v -> {
+            binding.checkDreamland.setChecked(
+                    !binding.checkDreamland.isChecked()
+            );
+        });
+
+        binding.beachwalk.setOnClickListener(v -> {
+            binding.checkBeachwalk.setChecked(
+                    !binding.checkBeachwalk.isChecked()
+            );
+        });
+
+        binding.merputResto.setOnClickListener(v -> {
+            binding.checkMerputResto.setChecked(
+                    !binding.checkMerputResto.isChecked()
+            );
+        });
+
+        binding.baliGolf.setOnClickListener(v -> {
+            binding.checkGolf.setChecked(
+                    !binding.checkGolf.isChecked()
+            );
+        });
+
+        binding.garudaWisnu.setOnClickListener(v -> {
+            binding.checkGaruda.setChecked(
+                    !binding.checkGaruda.isChecked()
+            );
+        });
+
+        binding.tanjungBenoa.setOnClickListener(v -> {
+            binding.checkTanjungBenoa.setChecked(
+                    !binding.checkTanjungBenoa.isChecked()
+            );
+        });
+
+        binding.nusaDua.setOnClickListener(v -> {
+            binding.checkNusaDua.setChecked(
+                    !binding.checkNusaDua.isChecked()
+            );
+        });
+
+        binding.apurvaKempinski.setOnClickListener(v -> {
+            binding.checkApurva.setChecked(
+                    !binding.checkApurva.isChecked()
+            );
+        });
+
+        binding.pandawa.setOnClickListener(v -> {
+            binding.checkPandawa.setChecked(
+                    !binding.checkPandawa.isChecked()
+            );
+        });
+    }
+
+    void inputUserPlaceList(){
+        if (binding.checkPadang.isChecked()){
+            userPlaceList.add("Pantai Padang Padang");
+        }
+        if (binding.checkDreamland.isChecked()){
+            userPlaceList.add("Pantai Dreamland");
+        }
+        if (binding.checkBeachwalk.isChecked()){
+            userPlaceList.add("Beachwalk Walking Centre");
+        }
+        if (binding.checkMerputResto.isChecked()){
+            userPlaceList.add("Merah Putih Restaurant");
+        }
+        if (binding.checkGaruda.isChecked()){
+            userPlaceList.add("Garuda Wisnu Kencana");
+        }
+        if (binding.checkTanjungBenoa.isChecked()){
+            userPlaceList.add("Pantai Tanjung Benoa");
+        }
+        if (binding.checkNusaDua.isChecked()){
+            userPlaceList.add("Pantai Nusa Dua");
+        }
+        if (binding.checkApurva.isChecked()){
+            userPlaceList.add("Apurva Kempinski Hotel");
+        }
+        if (binding.checkPandawa.isChecked()){
+            userPlaceList.add("Pantai Pandawa");
+        }
+        if (binding.checkGolf.isChecked()){
+            userPlaceList.add("Bali National Golf Club");
+        }
     }
 
     void clearAnswer(){
@@ -98,11 +205,32 @@ public class SelectPlaceActivity extends AppCompatActivity {
     Edge searchEdgeData(String asal, String tujuan) {
 
         List<Edge> travelCompleteGraph = new ArrayList<>(
-                Arrays.asList(new Edge("", "", 10), new Edge("0", "", 6),
-                        new Edge("", "", 5), new Edge("", "", 15),
-                        new Edge("", "", 5), new Edge("", "", 5),
-                        new Edge("", "", 5), new Edge("", "", 5),
-                        new Edge("", "", 5), new Edge("", "", 5))
+                Arrays.asList(new Edge("Bali National Golf Club", "Garuda Wisnu Kencana", 25),
+                        new Edge("Bali National Golf Club", "Pantai Tanjung Benoa", 12),
+                        new Edge("Bali National Golf Club", "Pantai Nusa Dua", 6),
+                        new Edge("Bali National Golf Club", "Apurva Kempinski Hotel", 5),
+                        new Edge("Bali National Golf Club", "Pantai Pandawa", 14),
+                        new Edge("Bali National Golf Club", "Pantai Padang Padang", 36),
+                        new Edge("Bali National Golf Club", "Pantai Dreamland", 36),
+                        new Edge("Bali National Golf Club", "Beachwalk Walking Centre", 29),
+                        new Edge("Bali National Golf Club", "Merah Putih Restaurant", 40),
+                        new Edge("Garuda Wisnu Kencana", "Pantai Tanjung Benoa", 29),
+                        new Edge("Garuda Wisnu Kencana", "Pantai Nusa Dua", 26),
+                        new Edge("Garuda Wisnu Kencana", "Apurva Kempinski Hotel", 29),
+                        new Edge("Garuda Wisnu Kencana", "Pantai Pandawa", 18),
+                        new Edge("Garuda Wisnu Kencana", "Pantai Padang Padang", 23),
+                        new Edge("Garuda Wisnu Kencana", "Pantai Dreamland", 25),
+                        new Edge("Garuda Wisnu Kencana", "Beachwalk Walking Centre", 32),
+                        new Edge("Garuda Wisnu Kencana", "Merah Putih Restaurant", 44),
+
+                        new Edge("Bali Naional", "", 5),
+                        new Edge("", "", 15),
+                        new Edge("", "", 5),
+                        new Edge("", "", 5),
+                        new Edge("", "", 5),
+                        new Edge("", "", 5),
+                        new Edge("", "", 5),
+                        new Edge("", "", 5))
         );
 
         for (Edge edge: travelCompleteGraph) {
@@ -123,7 +251,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
     void kruskalMST(List<Edge> E) {
         kruskalMinimumTotalTimeSpend = 0;
 
-        E.sort((o1, o2) -> o1.getBobot() - o2.getBobot());
+        E.sort(Comparator.comparingInt(Edge::getBobot));
 
         for (Edge edge: E) {
             if (!kruskalBestRoute.contains(edge)) {

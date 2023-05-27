@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/naufa/AndroidStudioProjects/Jajal/app/src/main/res/drawable/place_selector.xml" value="0.149" />
         <entry key="..\:/Users/naufa/AndroidStudioProjects/Jajal/app/src/main/res/layout/activity_main.xml" value="0.1671875" />
-        <entry key="..\:/Users/naufa/AndroidStudioProjects/Jajal/app/src/main/res/layout/activity_select_place.xml" value="0.2743589743589744" />
+        <entry key="..\:/Users/naufa/AndroidStudioProjects/Jajal/app/src/main/res/layout/activity_select_place.xml" value="0.2" />
       </map>
     </option>
   </component>
