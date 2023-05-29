@@ -207,30 +207,49 @@ public class SelectPlaceActivity extends AppCompatActivity {
         List<Edge> travelCompleteGraph = new ArrayList<>(
                 Arrays.asList(new Edge("Bali National Golf Club", "Garuda Wisnu Kencana", 25),
                         new Edge("Bali National Golf Club", "Pantai Tanjung Benoa", 12),
-                        new Edge("Bali National Golf Club", "Pantai Nusa Dua", 6),
-                        new Edge("Bali National Golf Club", "Apurva Kempinski Hotel", 5),
-                        new Edge("Bali National Golf Club", "Pantai Pandawa", 14),
-                        new Edge("Bali National Golf Club", "Pantai Padang Padang", 36),
-                        new Edge("Bali National Golf Club", "Pantai Dreamland", 36),
-                        new Edge("Bali National Golf Club", "Beachwalk Walking Centre", 29),
-                        new Edge("Bali National Golf Club", "Merah Putih Restaurant", 40),
                         new Edge("Garuda Wisnu Kencana", "Pantai Tanjung Benoa", 29),
+                        new Edge("Bali National Golf Club", "Pantai Nusa Dua", 6),
                         new Edge("Garuda Wisnu Kencana", "Pantai Nusa Dua", 26),
-                        new Edge("Garuda Wisnu Kencana", "Apurva Kempinski Hotel", 29),
-                        new Edge("Garuda Wisnu Kencana", "Pantai Pandawa", 18),
-                        new Edge("Garuda Wisnu Kencana", "Pantai Padang Padang", 23),
-                        new Edge("Garuda Wisnu Kencana", "Pantai Dreamland", 25),
-                        new Edge("Garuda Wisnu Kencana", "Beachwalk Walking Centre", 32),
-                        new Edge("Garuda Wisnu Kencana", "Merah Putih Restaurant", 44),
-
-                        new Edge("Bali Naional", "", 5),
-                        new Edge("", "", 15),
-                        new Edge("", "", 5),
-                        new Edge("", "", 5),
-                        new Edge("", "", 5),
-                        new Edge("", "", 5),
-                        new Edge("", "", 5),
-                        new Edge("", "", 5))
+                        new Edge("Pantai Tanjung Benoa", "Pantai Nusa Dua", 13),
+                        new Edge("Apurva Kempinski Hotel", "Pantai Nusa Dua", 12),
+                        new Edge("Apurva Kempinski Hotel", "Pantai Tanjung Benoa", 17),
+                        new Edge("Apurva Kempinski Hotel", "Garuda Wisnu Kencana", 20),
+                        new Edge("Apurva Kempinski Hotel", "Bali National Golf Club", 5),
+                        new Edge("Pantai Pandawa", "Apurva Kempinski Hotel", 11),
+                        new Edge("Pantai Pandawa", "Pantai Nusa Dua", 21),
+                        new Edge("Pantai Pandawa", "Pantai Tanjung Benoa", 26),
+                        new Edge("Pantai Pandawa", "Garuda Wisnu Kencana", 18),
+                        new Edge("Pantai Pandawa", "Bali National Golf Club", 14),
+                        new Edge("Pantai Padang Padang", "Pantai Pandawa", 29),
+                        new Edge("Pantai Padang Padang", "Apurva Kempinski Hotel", 31),
+                        new Edge("Pantai Padang Padang", "Pantai Nusa Dua", 38),
+                        new Edge("Pantai Padang Padang", "Pantai Tanjung Benoa", 42),
+                        new Edge("Pantai Padang Padang", "Garuda Wisnu Kencana", 23),
+                        new Edge("Pantai Padang Padang", "Bali National Golf Club", 36),
+                        new Edge("Pantai Dreamland", "Pantai Padang Padang", 11),
+                        new Edge("Pantai Dreamland", "Pantai Pandawa", 31),
+                        new Edge("Pantai Dreamland", "Apurva Kempinski Hotel", 32),
+                        new Edge("Pantai Dreamland", "Pantai Nusa Dua", 41),
+                        new Edge("Pantai Dreamland", "Pantai Tanjung Benoa", 45),
+                        new Edge("Pantai Dreamland", "Garuda Wisnu Kencana", 25),
+                        new Edge("Pantai Dreamland", "Bali National Golf Club", 36),
+                        new Edge("Beachwalk Shopping Center", "Pantai Dreamland", 58),
+                        new Edge("Beachwalk Shopping Center", "Pantai Padang Padang", 57),
+                        new Edge("Beachwalk Shopping Center", "Pantai Pandawa", 45),
+                        new Edge("Beachwalk Shopping Center", "Apurva Kempinski Hotel", 34),
+                        new Edge("Beachwalk Shopping Center", "Pantai Nusa Dua", 31),
+                        new Edge("Beachwalk Shopping Center", "Pantai Tanjung Benoa", 33),
+                        new Edge("Beachwalk Shopping Center", "Garuda Wisnu Kencana", 32),
+                        new Edge("Beachwalk Shopping Center", "Bali National Golf Club", 29),
+                        new Edge("Merah Putih Restaurant", "Beachwalk Shopping Center", 23),
+                        new Edge("Merah Putih Restaurant", "Pantai Dreamland", 65),
+                        new Edge("Merah Putih Restaurant", "Pantai Padang Padang", 68),
+                        new Edge("Merah Putih Restaurant", "Pantai Pandawa", 52),
+                        new Edge("Merah Putih Restaurant", "Apurva Kempinski Hotel", 52),
+                        new Edge("Merah Putih Restaurant", "Pantai Nusa Dua", 44),
+                        new Edge("Merah Putih Restaurant", "Pantai Tanjung Benoa", 42),
+                        new Edge("Merah Putih Restaurant", "Garuda Wisnu Kencana", 44),
+                        new Edge("Merah Putih Restaurant", "Bali National Golf Club", 40))
         );
 
         for (Edge edge: travelCompleteGraph) {
@@ -248,15 +267,35 @@ public class SelectPlaceActivity extends AppCompatActivity {
         userTravelGraph.add(edge);
     }
 
-    void kruskalMST(List<Edge> E) {
+    void kruskalMST(List<Edge> travelGraph) {
         kruskalMinimumTotalTimeSpend = 0;
 
-        E.sort(Comparator.comparingInt(Edge::getBobot));
+        travelGraph.sort(Comparator.comparingInt(Edge::getBobot));
 
-        for (Edge edge: E) {
-            if (!kruskalBestRoute.contains(edge)) {
+        int numberOfEdgeVisited = 0;
+        int numberOfNewPlaceVisited;
+        List<String> visited = new ArrayList<>();
+        for (Edge edge: travelGraph) {
+            numberOfNewPlaceVisited = 0;
+            if (!visited.contains(edge.getAsal())) {
+                numberOfNewPlaceVisited++;
+            }
+
+            if (!visited.contains(edge.getTujuan())) {
+                numberOfNewPlaceVisited++;
+            }
+
+            if (numberOfEdgeVisited + 1 < visited.size() + numberOfNewPlaceVisited) {
                 kruskalBestRoute.add(edge);
                 kruskalMinimumTotalTimeSpend += edge.getBobot();
+                numberOfEdgeVisited++;
+                if (!visited.contains(edge.getAsal())) {
+                    visited.add(edge.getAsal());
+                }
+
+                if (!visited.contains(edge.getTujuan())) {
+                    visited.add(edge.getTujuan());
+                }
             }
 
             if (kruskalBestRoute.size() == userPlaceList.size() - 1) {
