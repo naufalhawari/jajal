@@ -11,14 +11,15 @@ import com.example.jajal.databinding.ActivitySelectPlaceBinding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 public class SelectPlaceActivity extends AppCompatActivity {
 
-    int bruteMinimumTotalTimeSpend, kruskalMinimumTotalTimeSpend;
-    long bruteExeTime, kruskalExeTime;
-    List<Edge> bruteBestRoute = new ArrayList<>();
-    List<Edge> kruskalBestRoute = new ArrayList<>();
+    int bruteMinimumTotalTimeSpend, greedyMinimumTotalTimeSpend;
+    long bruteExeTime, greedyExeTime;
+    List<String> bruteBestRoute = new ArrayList<>();
+    List<String> greedyBestRoute = new ArrayList<>();
     List<Edge> userTravelGraph = new ArrayList<>();
     List<String> userPlaceList = new ArrayList<>();
     ActivitySelectPlaceBinding binding;
@@ -43,7 +44,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 binding.checkResultButton.setText("Back");
                 binding.result.setVisibility(View.VISIBLE);
                 binding.selectPlaceList.setVisibility(View.GONE);
-                checkResult();
+                checkResult("brute");
             } else {
                 binding.checkResultButton.setText("Check Result");
                 binding.selectPlaceList.setVisibility(View.VISIBLE);
@@ -55,12 +56,20 @@ public class SelectPlaceActivity extends AppCompatActivity {
         binding.buttonBruteforce.setOnClickListener(v -> {
 
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.primary));
-            binding.buttonKruskal.setBackgroundColor(getColor(R.color.secondary));
+            binding.buttonGreedy.setBackgroundColor(getColor(R.color.secondary));
+
+            binding.resultContent.setVisibility(View.INVISIBLE);
+            checkResult("brute");
+            binding.resultContent.setVisibility(View.INVISIBLE);
         });
 
-        binding.buttonKruskal.setOnClickListener(v -> {
-            binding.buttonKruskal.setBackgroundColor(getColor(R.color.primary));
+        binding.buttonGreedy.setOnClickListener(v -> {
+            binding.buttonGreedy.setBackgroundColor(getColor(R.color.primary));
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.secondary));
+
+            binding.resultContent.setVisibility(View.INVISIBLE);
+            checkResult("greedy");
+            binding.resultContent.setVisibility(View.VISIBLE);
         });
 
         binding.padang.setOnClickListener(v -> binding.checkPadang.setChecked(
@@ -167,40 +176,47 @@ public class SelectPlaceActivity extends AppCompatActivity {
         binding.checkPandawa.setChecked(false);
         binding.checkTanjungBenoa.setChecked(false);
 
-        kruskalMinimumTotalTimeSpend = 0;
+        greedyMinimumTotalTimeSpend = 0;
         bruteMinimumTotalTimeSpend = 0;
         bruteExeTime = 0;
-        kruskalExeTime = 0;
+        greedyExeTime = 0;
         userPlaceList.clear();
-        kruskalBestRoute.clear();
+        greedyBestRoute.clear();
         bruteBestRoute.clear();
     }
 
-    void checkResult(){
+    void checkResult(String algorithm){
         long start, end;
 
-        start = System.currentTimeMillis()/1000;
-        bruteForceMST(userPlaceList, 0);
-        end = System.currentTimeMillis()/1000;
-        bruteExeTime = start - end;
-
-        start = System.currentTimeMillis()/1000;
-        userTravelGraph = createTravelGraph(userPlaceList);
-        kruskalMST(userTravelGraph);
-        end = System.currentTimeMillis()/1000;
-        kruskalExeTime = start - end;
-    }
-
-    List<Edge> createTravelGraph(List<String> placeList) {
-        List<Edge> travelGraph = new ArrayList<>();
-        for (int i = 0; i < placeList.size() - 1; i++) {
-            for (int j = i + 1; j < placeList.size(); j++) {
-                travelGraph.add(searchEdgeData(placeList.get(i), placeList.get(j)));
-            }
+        if (algorithm.equals("brute")) {
+            start = System.currentTimeMillis()/1000;
+            bruteForceEulerPath(userPlaceList, 0);
+            end = System.currentTimeMillis()/1000;
+            bruteExeTime = start - end;
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime));
+        }
+        else {
+            start = System.currentTimeMillis()/1000;
+            greedyEulerPath(userPlaceList);
+            end = System.currentTimeMillis()/1000;
+            greedyExeTime = start - end;
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", greedyExeTime));
         }
 
-        return travelGraph;
+
+
     }
+
+//    List<Edge> createTravelGraph(List<String> placeList) {
+//        List<Edge> travelGraph = new ArrayList<>();
+//        for (int i = 0; i < placeList.size() - 1; i++) {
+//            for (int j = i + 1; j < placeList.size(); j++) {
+//                travelGraph.add(searchEdgeData(placeList.get(i), placeList.get(j)));
+//            }
+//        }
+//
+//        return travelGraph;
+//    }
 
     Edge searchEdgeData(String asal, String tujuan) {
 
@@ -262,62 +278,56 @@ public class SelectPlaceActivity extends AppCompatActivity {
         return null;
     }
 
-    void addEdgeToList(String asal, String tujuan) {
-        Edge edge = searchEdgeData(asal, tujuan);
-        userTravelGraph.add(edge);
-    }
+    void greedyEulerPath(List<String> unvisitPlaceList) {
 
-    void kruskalMST(List<Edge> travelGraph) {
-        kruskalMinimumTotalTimeSpend = 0;
+        int numOfEdgesVisited = 1;
+        greedyBestRoute.add(unvisitPlaceList.get(0));
+        unvisitPlaceList.remove(unvisitPlaceList.get(0));
 
-        travelGraph.sort(Comparator.comparingInt(Edge::getBobot));
-
-        int numberOfEdgeVisited = 0;
-        int numberOfNewPlaceVisited;
-        List<String> visited = new ArrayList<>();
-        for (Edge edge: travelGraph) {
-            numberOfNewPlaceVisited = 0;
-            if (!visited.contains(edge.getAsal())) {
-                numberOfNewPlaceVisited++;
-            }
-
-            if (!visited.contains(edge.getTujuan())) {
-                numberOfNewPlaceVisited++;
-            }
-
-            if (numberOfEdgeVisited + 1 < visited.size() + numberOfNewPlaceVisited) {
-                kruskalBestRoute.add(edge);
-                kruskalMinimumTotalTimeSpend += edge.getBobot();
-                numberOfEdgeVisited++;
-                if (!visited.contains(edge.getAsal())) {
-                    visited.add(edge.getAsal());
+        while (numOfEdgesVisited < userPlaceList.size()) {
+            int min = 999;
+            String minPlace = "";
+            String minPosition = "";
+            for (String place: unvisitPlaceList) {
+                if (searchEdgeData(greedyBestRoute.get(0), place).getBobot() < min) {
+                    minPlace = place;
+                    min = searchEdgeData(greedyBestRoute.get(0), place).getBobot();
+                    minPosition = "left";
                 }
 
-                if (!visited.contains(edge.getTujuan())) {
-                    visited.add(edge.getTujuan());
+                if(searchEdgeData(greedyBestRoute.get(numOfEdgesVisited - 1), place).getBobot() < min) {
+                    minPlace = place;
+                    min = searchEdgeData(greedyBestRoute.get(numOfEdgesVisited - 1), place).getBobot();
+                    minPosition = "right";
                 }
             }
 
-            if (kruskalBestRoute.size() == userPlaceList.size() - 1) {
-                break;
+            if (minPosition.equals("left")) {
+                greedyBestRoute.add(0, minPlace);
+            } else {
+                greedyBestRoute.add(minPlace);
             }
+
+            unvisitPlaceList.remove(minPlace);
+            numOfEdgesVisited++;
         }
 
+
     }
 
-    void bruteForceMST(List<String> placeList, int k) {
+    void bruteForceEulerPath(List<String> placeList, int k) {
 
         bruteMinimumTotalTimeSpend = 0;
 
         for (int i = k; i < placeList.size(); i++) {
             java.util.Collections.swap(placeList, i, k);
-            bruteForceMST(placeList, k + 1);
+            bruteForceEulerPath(placeList, k + 1);
             java.util.Collections.swap(placeList, k, i);
         }
         if (k == placeList.size() - 1) {
             int t = computeTotalTimeSpend(placeList);
             if (t < bruteMinimumTotalTimeSpend) {
-                bruteBestRoute = createTravelGraph(placeList);
+                bruteBestRoute = placeList;
                 bruteMinimumTotalTimeSpend = t;
             }
         }
