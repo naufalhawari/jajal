@@ -579,7 +579,8 @@
                     android:orientation="vertical"
                     android:background="@color/white"
                     android:layout_gravity="center_vertical"
-                    android:padding="24dp">
+                    android:padding="24dp"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -623,6 +624,7 @@
                             android:layout_marginTop="10dp"
                             android:text="Pilihan Rute:\n"
                             android:textSize="18sp"
+                            android:textStyle="bold"
                             android:textColor="@color/black"/>
 
                         <TextView
@@ -632,6 +634,7 @@
                             android:layout_marginTop="10dp"
                             android:text="Total Waktu Rute:\n"
                             android:textSize="18sp"
+                            android:textStyle="bold"
                             android:textColor="@color/black"/>
 
                         <TextView
@@ -640,6 +643,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Waktu Eksekusi Algoritma:\n"
+                            android:textStyle="bold"
                             android:textSize="18sp"
                             android:textColor="@color/black"/>
 
@@ -649,6 +653,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="Hasil Optimal: "
+                            android:textStyle="bold"
                             android:textSize="18sp"
                             android:textColor="@color/black"/>
 

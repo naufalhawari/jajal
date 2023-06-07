@@ -221,7 +221,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 //            bruteForceEulerPath(tempPlaceList, 0);
 //            end = System.currentTimeMillis();
 //            bruteExeTime = end - start;
-            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime/1000));
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d ms", bruteExeTime));
 
             String teksRute;
             teksRute = "Pilihan Rute:";
@@ -236,6 +236,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
             String teksWaktuRute = "Total Waktu Rute: ";
             teksWaktuRute += String.valueOf(bruteMinimumTotalTimeSpend);
+            teksWaktuRute += " menit";
             binding.waktuRute.setText(teksWaktuRute);
 
             binding.hasilOptimal.setText("");
@@ -245,7 +246,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 //            greedyEulerPath(userPlaceList);
 //            end = System.currentTimeMillis();
 //            greedyExeTime = end - start;
-            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", greedyExeTime / 1000));
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d ms", greedyExeTime));
 
             String teksRute;
             teksRute = "Pilihan Rute:";
@@ -260,6 +261,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
             String teksWaktuRute = "Total Waktu Rute: ";
             teksWaktuRute += String.valueOf(greedyMinimumTotalTimeSpend);
+            teksWaktuRute += " menit";
             binding.waktuRute.setText(teksWaktuRute);
 
             if (bruteMinimumTotalTimeSpend == greedyMinimumTotalTimeSpend) {
