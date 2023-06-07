@@ -18,7 +18,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
     int bruteMinimumTotalTimeSpend, greedyMinimumTotalTimeSpend;
     long bruteExeTime, greedyExeTime;
-    List<String> bruteBestRoute = new ArrayList<>();
+    List<String> bruteBestRoute;
     List<String> greedyBestRoute = new ArrayList<>();
     List<Edge> userTravelGraph = new ArrayList<>();
     List<String> userPlaceList = new ArrayList<>();
@@ -32,18 +32,18 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
         binding = ActivitySelectPlaceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setListener();
     }
 
     void setListener(){
         binding.checkResultButton.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "Here", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), "Here", Toast.LENGTH_LONG).show();
             if (!checkResultState) {
                 inputUserPlaceList();
                 binding.checkResultButton.setText("Back");
                 binding.result.setVisibility(View.VISIBLE);
                 binding.selectPlaceList.setVisibility(View.GONE);
+                calculateResult();
                 checkResult("brute");
             } else {
                 binding.checkResultButton.setText("Check Result");
@@ -58,7 +58,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.primary));
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.secondary));
 
-            clearResult();
+//            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("brute");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -68,7 +68,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.primary));
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.secondary));
 
-            clearResult();
+//            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("greedy");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -166,14 +166,14 @@ public class SelectPlaceActivity extends AppCompatActivity {
         }
     }
 
-    void clearResult() {
-        greedyMinimumTotalTimeSpend = 0;
-        bruteMinimumTotalTimeSpend = 0;
-        bruteExeTime = 0;
-        greedyExeTime = 0;
-        greedyBestRoute.clear();
-        bruteBestRoute.clear();
-    }
+//    void clearResult() {
+//        greedyMinimumTotalTimeSpend = 0;
+//        bruteMinimumTotalTimeSpend = 0;
+//        bruteExeTime = 0;
+//        greedyExeTime = 0;
+//        greedyBestRoute.clear();
+//        bruteBestRoute.clear();
+//    }
 
     void clearAnswer(){
         binding.checkApurva.setChecked(false);
@@ -196,14 +196,31 @@ public class SelectPlaceActivity extends AppCompatActivity {
         bruteBestRoute.clear();
     }
 
+    void calculateResult() {
+        long start, end;
+
+        bruteMinimumTotalTimeSpend = 999;
+        List<String> tempPlaceList = new ArrayList<>(userPlaceList);
+        start = System.currentTimeMillis();
+        bruteForceEulerPath(tempPlaceList, 0);
+        end = System.currentTimeMillis();
+        bruteExeTime = end - start;
+
+        start = System.currentTimeMillis();
+        greedyEulerPath(userPlaceList);
+        end = System.currentTimeMillis();
+        greedyExeTime = end - start;
+    }
+
     void checkResult(String algorithm){
         long start, end;
 
         if (algorithm.equals("brute")) {
-            start = System.currentTimeMillis();
-            bruteForceEulerPath(userPlaceList, 0);
-            end = System.currentTimeMillis();
-            bruteExeTime = end - start;
+//            start = System.currentTimeMillis();
+//            List<String> tempPlaceList = new ArrayList<>(userPlaceList);
+//            bruteForceEulerPath(tempPlaceList, 0);
+//            end = System.currentTimeMillis();
+//            bruteExeTime = end - start;
             binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime/1000));
 
             String teksRute;
@@ -220,12 +237,14 @@ public class SelectPlaceActivity extends AppCompatActivity {
             String teksWaktuRute = "Total Waktu Rute: ";
             teksWaktuRute += String.valueOf(bruteMinimumTotalTimeSpend);
             binding.waktuRute.setText(teksWaktuRute);
+
+            binding.hasilOptimal.setText("");
         }
         else {
-            start = System.currentTimeMillis();
-            greedyEulerPath(userPlaceList);
-            end = System.currentTimeMillis();
-            greedyExeTime = end - start;
+//            start = System.currentTimeMillis();
+//            greedyEulerPath(userPlaceList);
+//            end = System.currentTimeMillis();
+//            greedyExeTime = end - start;
             binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", greedyExeTime / 1000));
 
             String teksRute;
@@ -242,6 +261,13 @@ public class SelectPlaceActivity extends AppCompatActivity {
             String teksWaktuRute = "Total Waktu Rute: ";
             teksWaktuRute += String.valueOf(greedyMinimumTotalTimeSpend);
             binding.waktuRute.setText(teksWaktuRute);
+
+            if (bruteMinimumTotalTimeSpend == greedyMinimumTotalTimeSpend) {
+                binding.hasilOptimal.setText("Optimal: Ya");
+            } else {
+                binding.hasilOptimal.setText("Optimal: Tidak");
+            }
+
         }
 
 
@@ -359,11 +385,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
     }
 
-    void bruteForceEulerPath(List<String> userPlaceList, int k) {
-
-        List<String> placeList = new ArrayList<>(userPlaceList);
-
-        bruteMinimumTotalTimeSpend = 999;
+    void bruteForceEulerPath(List<String> placeList, int k) {
 
         for (int i = k; i < placeList.size(); i++) {
             java.util.Collections.swap(placeList, i, k);
@@ -373,7 +395,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
         if (k == placeList.size() - 1) {
             int t = computeTotalTimeSpend(placeList);
             if (t < bruteMinimumTotalTimeSpend) {
-                bruteBestRoute = placeList;
+                bruteBestRoute = new ArrayList<>(placeList);
                 bruteMinimumTotalTimeSpend = t;
             }
         }
