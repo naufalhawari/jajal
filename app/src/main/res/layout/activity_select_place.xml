@@ -48,520 +48,529 @@
             android:background="@color/secondary">
 
             <LinearLayout
-                android:id="@+id/select_place_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/padang"
+                    android:id="@+id/select_place_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/pantai_padang_padang_2"/>
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/padang"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Pantai Padang Padang"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/pantai_padang_padang_2"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.4"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pantai Padang Padang"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.4"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_padang"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_padang"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/dreamland"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/pantai_dreamland"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/dreamland"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Pantai Dreamland"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/pantai_dreamland"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.5"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pantai Dreamland"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.5"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_dreamland"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_dreamland"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/beachwalk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/beachwalk"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/beachwalk"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Beachwalk Shopping Center"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/beachwalk"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.5"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Beachwalk Shopping Center"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.5"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_beachwalk"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_beachwalk"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/merput_resto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/merput_resto"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/merput_resto"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Merah Putih Restaurant"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/merput_resto"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.5"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Merah Putih Restaurant"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.5"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_merput_resto"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_merput_resto"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/bali_golf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/bali_golf"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/bali_golf"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Bali National\nGolf Club"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/bali_golf"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.6"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Bali National\nGolf Club"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.6"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_golf"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_golf"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/garuda_wisnu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/garuda"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/garuda_wisnu"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Garuda Wisnu Kencana"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/garuda"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.5"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Garuda Wisnu Kencana"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.5"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_garuda"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_garuda"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tanjung_benoa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/tanjung_benoa"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tanjung_benoa"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Pantai Tanjung Benoa"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/tanjung_benoa"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.6"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pantai Tanjung Benoa"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.6"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_tanjung_benoa"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_tanjung_benoa"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/nusa_dua"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/nusa_dua"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/nusa_dua"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Pantai Nusa Dua"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/nusa_dua"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.6"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pantai Nusa Dua"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.6"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_nusa_dua"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_nusa_dua"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/apurva_kempinski"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/apurva_kempinski"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/apurva_kempinski"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Apurva Kempinski Hotel"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/apurva_kempinski"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.8"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Apurva Kempinski Hotel"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.8"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_apurva"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_apurva"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/pandawa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/pandawa"/>
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/pandawa"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="4dp">
-                        ">
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:layout_width="220dp"
-                            android:layout_height="wrap_content"
-                            android:text="Pantai Pandawa"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/pandawa"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⭐4.6"
-                            android:textStyle="bold"
-                            android:textSize="20sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="4dp">
+                            ">
+
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pantai Pandawa"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="24sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⭐4.6"
+                                android:textStyle="bold"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/check_pandawa"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:button="@null"
+                            android:drawableEnd="@drawable/place_selector">
+
+
+                        </CheckBox>
+
 
                     </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/check_pandawa"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="center"
-                        android:button="@null"
-                        android:drawableEnd="@drawable/place_selector">
-
-
-                    </CheckBox>
-
-
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/result"
@@ -593,7 +602,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="32dp"
                             android:textAllCaps="false"
-                            android:text="Kruskal"
+                            android:text="Greedy"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="18sp"

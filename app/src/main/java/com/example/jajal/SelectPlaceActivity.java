@@ -60,7 +60,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("brute");
-            binding.resultContent.setVisibility(View.INVISIBLE);
+            binding.resultContent.setVisibility(View.VISIBLE);
         });
 
         binding.buttonGreedy.setOnClickListener(v -> {
@@ -139,7 +139,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             userPlaceList.add("Pantai Dreamland");
         }
         if (binding.checkBeachwalk.isChecked()){
-            userPlaceList.add("Beachwalk Walking Centre");
+            userPlaceList.add("Beachwalk Shopping Center");
         }
         if (binding.checkMerputResto.isChecked()){
             userPlaceList.add("Merah Putih Restaurant");
@@ -189,18 +189,48 @@ public class SelectPlaceActivity extends AppCompatActivity {
         long start, end;
 
         if (algorithm.equals("brute")) {
-            start = System.currentTimeMillis()/1000;
+            start = System.currentTimeMillis();
             bruteForceEulerPath(userPlaceList, 0);
-            end = System.currentTimeMillis()/1000;
+            end = System.currentTimeMillis();
             bruteExeTime = start - end;
             binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime));
+
+            String teksRute;
+            teksRute = "Pilihan Rute:";
+            for (int i = 0; i < bruteBestRoute.size(); i++) {
+                teksRute += "\n";
+                teksRute += String.valueOf(i + 1);
+                teksRute += ". ";
+                teksRute += bruteBestRoute.get(i);
+            }
+            teksRute += "\n";
+            binding.rute.setText(teksRute);
+
+            String teksWaktuRute = "Total Waktu Rute: ";
+            teksWaktuRute += String.valueOf(bruteMinimumTotalTimeSpend);
+            binding.waktuRute.setText(teksWaktuRute);
         }
         else {
-            start = System.currentTimeMillis()/1000;
+            start = System.currentTimeMillis();
             greedyEulerPath(userPlaceList);
-            end = System.currentTimeMillis()/1000;
+            end = System.currentTimeMillis();
             greedyExeTime = start - end;
-            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", greedyExeTime));
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", start));
+
+            String teksRute;
+            teksRute = "Pilihan Rute:";
+            for (int i = 0; i < greedyBestRoute.size(); i++) {
+                teksRute += "\n";
+                teksRute += String.valueOf(i + 1);
+                teksRute += ". ";
+                teksRute += greedyBestRoute.get(i);
+            }
+            teksRute += "\n";
+            binding.rute.setText(teksRute);
+
+            String teksWaktuRute = "Total Waktu Rute: ";
+            teksWaktuRute += String.valueOf(greedyMinimumTotalTimeSpend);
+            binding.waktuRute.setText(teksWaktuRute);
         }
 
 
@@ -308,6 +338,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 greedyBestRoute.add(minPlace);
             }
 
+            greedyMinimumTotalTimeSpend += min;
             unvisitPlaceList.remove(minPlace);
             numOfEdgesVisited++;
         }
@@ -317,7 +348,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
     void bruteForceEulerPath(List<String> placeList, int k) {
 
-        bruteMinimumTotalTimeSpend = 0;
+        bruteMinimumTotalTimeSpend = 999;
 
         for (int i = k; i < placeList.size(); i++) {
             java.util.Collections.swap(placeList, i, k);
