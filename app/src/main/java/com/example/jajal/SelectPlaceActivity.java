@@ -58,6 +58,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.primary));
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.secondary));
 
+            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("brute");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -67,6 +68,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.primary));
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.secondary));
 
+            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("greedy");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -164,6 +166,15 @@ public class SelectPlaceActivity extends AppCompatActivity {
         }
     }
 
+    void clearResult() {
+        greedyMinimumTotalTimeSpend = 0;
+        bruteMinimumTotalTimeSpend = 0;
+        bruteExeTime = 0;
+        greedyExeTime = 0;
+        greedyBestRoute.clear();
+        bruteBestRoute.clear();
+    }
+
     void clearAnswer(){
         binding.checkApurva.setChecked(false);
         binding.checkBeachwalk.setChecked(false);
@@ -192,8 +203,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
             start = System.currentTimeMillis();
             bruteForceEulerPath(userPlaceList, 0);
             end = System.currentTimeMillis();
-            bruteExeTime = start - end;
-            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime));
+            bruteExeTime = end - start;
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", bruteExeTime/1000));
 
             String teksRute;
             teksRute = "Pilihan Rute:";
@@ -214,8 +225,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
             start = System.currentTimeMillis();
             greedyEulerPath(userPlaceList);
             end = System.currentTimeMillis();
-            greedyExeTime = start - end;
-            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", start));
+            greedyExeTime = end - start;
+            binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d", greedyExeTime / 1000));
 
             String teksRute;
             teksRute = "Pilihan Rute:";
@@ -308,7 +319,9 @@ public class SelectPlaceActivity extends AppCompatActivity {
         return null;
     }
 
-    void greedyEulerPath(List<String> unvisitPlaceList) {
+    void greedyEulerPath(List<String> userPlaceList) {
+
+        List<String> unvisitPlaceList = new ArrayList<>(userPlaceList);
 
         int numOfEdgesVisited = 1;
         greedyBestRoute.add(unvisitPlaceList.get(0));
@@ -346,7 +359,9 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
     }
 
-    void bruteForceEulerPath(List<String> placeList, int k) {
+    void bruteForceEulerPath(List<String> userPlaceList, int k) {
+
+        List<String> placeList = new ArrayList<>(userPlaceList);
 
         bruteMinimumTotalTimeSpend = 999;
 
