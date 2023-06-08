@@ -575,7 +575,7 @@
                 <LinearLayout
                     android:id="@+id/result"
                     android:layout_width="match_parent"
-                    android:layout_height="600dp"
+                    android:layout_height="500dp"
                     android:orientation="vertical"
                     android:background="@color/white"
                     android:layout_gravity="center_vertical"
