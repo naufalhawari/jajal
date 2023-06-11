@@ -37,14 +37,18 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
     void setListener(){
         binding.checkResultButton.setOnClickListener(v -> {
-//            Toast.makeText(getApplicationContext(), "Here", Toast.LENGTH_LONG).show();
+
             if (!checkResultState) {
                 inputUserPlaceList();
-                binding.checkResultButton.setText("Back");
-                binding.result.setVisibility(View.VISIBLE);
-                binding.selectPlaceList.setVisibility(View.GONE);
-                calculateResult();
-                checkResult("brute");
+                if (userPlaceList.size() <= 1) {
+                    Toast.makeText(getApplicationContext(), "Minimal pilih dua tempat", Toast.LENGTH_LONG).show();
+                } else {
+                    binding.checkResultButton.setText("Back");
+                    binding.result.setVisibility(View.VISIBLE);
+                    binding.selectPlaceList.setVisibility(View.GONE);
+                    calculateResult();
+                    checkResult("brute");
+                }
             } else {
                 binding.checkResultButton.setText("Check Result");
                 binding.selectPlaceList.setVisibility(View.VISIBLE);
@@ -53,12 +57,11 @@ public class SelectPlaceActivity extends AppCompatActivity {
             }
             checkResultState = !checkResultState;
         });
+
         binding.buttonBruteforce.setOnClickListener(v -> {
 
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.primary));
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.secondary));
-
-//            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("brute");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -67,8 +70,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
         binding.buttonGreedy.setOnClickListener(v -> {
             binding.buttonGreedy.setBackgroundColor(getColor(R.color.primary));
             binding.buttonBruteforce.setBackgroundColor(getColor(R.color.secondary));
-
-//            clearResult();
             binding.resultContent.setVisibility(View.INVISIBLE);
             checkResult("greedy");
             binding.resultContent.setVisibility(View.VISIBLE);
@@ -166,15 +167,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
         }
     }
 
-//    void clearResult() {
-//        greedyMinimumTotalTimeSpend = 0;
-//        bruteMinimumTotalTimeSpend = 0;
-//        bruteExeTime = 0;
-//        greedyExeTime = 0;
-//        greedyBestRoute.clear();
-//        bruteBestRoute.clear();
-//    }
-
     void clearAnswer(){
         binding.checkApurva.setChecked(false);
         binding.checkBeachwalk.setChecked(false);
@@ -216,11 +208,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
         long start, end;
 
         if (algorithm.equals("brute")) {
-//            start = System.currentTimeMillis();
-//            List<String> tempPlaceList = new ArrayList<>(userPlaceList);
-//            bruteForceEulerPath(tempPlaceList, 0);
-//            end = System.currentTimeMillis();
-//            bruteExeTime = end - start;
             binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d ms", bruteExeTime));
 
             String teksRute;
@@ -242,10 +229,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
             binding.hasilOptimal.setText("");
         }
         else {
-//            start = System.currentTimeMillis();
-//            greedyEulerPath(userPlaceList);
-//            end = System.currentTimeMillis();
-//            greedyExeTime = end - start;
+
             binding.waktuEksekusi.setText(String.format("Waktu eksekusi: %d ms", greedyExeTime));
 
             String teksRute;
@@ -275,17 +259,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
 
     }
-
-//    List<Edge> createTravelGraph(List<String> placeList) {
-//        List<Edge> travelGraph = new ArrayList<>();
-//        for (int i = 0; i < placeList.size() - 1; i++) {
-//            for (int j = i + 1; j < placeList.size(); j++) {
-//                travelGraph.add(searchEdgeData(placeList.get(i), placeList.get(j)));
-//            }
-//        }
-//
-//        return travelGraph;
-//    }
 
     Edge searchEdgeData(String asal, String tujuan) {
 
